@@ -5,6 +5,8 @@
  * Date: 18/jun/2016
  * Time: 08:26 PM
  */
+include "habitaciones.php";
+resetHabitacion();
 ?>
 <html>
 <head>
@@ -22,7 +24,6 @@
 <label for="accion">Accion: </label>
 <input type="text" id="accion" onkeypress="if (event.keyCode == 13) {ejecutarAccion()}">
 <p id="historia">
-   Estas en la sala sur
 </p>
 </body>
 </html>

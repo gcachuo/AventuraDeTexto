@@ -20,18 +20,24 @@ function iniciarSesion() {
 }
 function ejecutarAccion() {
     var accion = $("#accion").val();
+    var jugador = $("#jugador").val();
     var historia = $("#historia");
 
-    alert(accion);
-    historia.append(accion + "<br>");
-    $.post(
-        "historia.php",
-        {
-            accion: accion
-        },
-        function (out) {
-            historia.append(out);
-        });
+    if(jugador!="") {
+        historia.append("<br>" + accion + "<br>");
+        $.post(
+            "acciones.php",
+            {
+                accion: accion,
+                jugador: jugador
+            },
+            function (out) {
+                historia.append(out);
+            });
 
-    $("#accion").val("");
+        $("#accion").val("");
+    }
+    else{
+        alert("Escriba un nombre de jugador");
+    }
 }
