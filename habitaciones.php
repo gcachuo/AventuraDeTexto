@@ -9,13 +9,23 @@
 require "bd.php";
 $bd = new bd();
 
-$lista_habitaciones = [
-    "sala" => ["descripcion" => 'Estas en la sala', "norte" => "cocina", "sur" => "cochera", "este" => "comedor", "oeste" => "baño"],
-    "cocina" => ["descripcion" => 'Estas en la cocina', "norte" => null, "sur" => "sala", "este" => null, "oeste" => null],
-    "baño" => ["descripcion" => 'Estas en el baño', "norte" => null, "sur" => null, "este" => "sala", "oeste" => null],
-    "comedor" => ["descripcion" => 'Estas en el comedor', "norte" => null, "sur" => null, "este" => null, "oeste" => "sala"],
-    "cochera" => ["descripcion" => 'Estas en la cochera', "norte" => "sala", "sur" => null, "este" => null, "oeste" => null]
-];
+$lista_habitaciones = obtenerHabitaciones();
+
+function obtenerHabitaciones()
+{
+    global $bd;
+    $lista_habitaciones = [];
+
+    $sql = "select nombre_habitacion nombre, descripcion_habitacion descripcion, norte,sur,este,oeste from habitaciones";
+    foreach ($bd->consulta($sql) as $reg) {
+        $lista_habitaciones[$reg["nombre"]]["descripcion"] = $reg["descripcion"];
+        $lista_habitaciones[$reg["nombre"]]["norte"] = $reg["norte"];
+        $lista_habitaciones[$reg["nombre"]]["sur"] = $reg["sur"];
+        $lista_habitaciones[$reg["nombre"]]["este"] = $reg["este"];
+        $lista_habitaciones[$reg["nombre"]]["oeste"] = $reg["oeste"];
+    }
+    return $lista_habitaciones;
+}
 
 function resetHabitacion()
 {
