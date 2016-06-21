@@ -24,7 +24,7 @@ function ejecutarAccion() {
     var historia = $("#historia");
 
     if(jugador!="") {
-        historia.append("<br>" + accion + "<br>");
+        historia.prepend("<br>" + accion + "<br>");
         $.post(
             "acciones.php",
             {
@@ -32,7 +32,7 @@ function ejecutarAccion() {
                 jugador: jugador
             },
             function (out) {
-                historia.append(out);
+                historia.prepend(out);
             });
 
         $("#accion").val("");
