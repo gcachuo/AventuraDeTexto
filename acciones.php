@@ -21,6 +21,6 @@ if (isset($_POST["accion"])) {
                 break;
         }
     } else
-        echo "Sintaxis Incompleta";
+        echo "Sintaxis Incorrecta";
 }
 

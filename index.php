@@ -6,7 +6,7 @@
  * Time: 08:26 PM
  */
 include "habitaciones.php";
-resetHabitacion();
+$inicio=resetHabitacion();
 ?>
 <html>
 <head>
@@ -23,7 +23,9 @@ resetHabitacion();
 <br>
 <label for="accion">Accion: </label>
 <input type="text" id="accion" onkeypress="if (event.keyCode == 13) {ejecutarAccion()}">
+<br><br>
 <p id="historia">
+    <?php echo $inicio?>
 </p>
 </body>
 </html>

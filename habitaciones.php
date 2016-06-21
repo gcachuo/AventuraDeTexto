@@ -34,7 +34,7 @@ function resetHabitacion()
     $habitacion_actual = "sala";
     insertarHabitacion($habitacion_actual);
 
-    return $lista_habitaciones[$habitacion_actual];
+    return $lista_habitaciones[$habitacion_actual]["descripcion"];
 }
 
 function siguienteHabitacion($jugador, $direccion)
