@@ -6,7 +6,6 @@
  * Date: 18/jun/2016
  * Time: 11:17 PM
  */
-
 class bd
 {
     protected $host = "localhost",
@@ -16,17 +15,28 @@ class bd
 
     function conectar()
     {
-        $mysqli = new mysqli($this->host, $this->user, $this->pass, $this->bd);
-        if ($mysqli->connect_errno) {
-            return "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+        try {
+            $mysqli = new mysqli($this->host, $this->user, $this->pass, $this->bd);
+            if ($mysqli->connect_errno) {
+                echo utf8_encode("Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error);
+                return null;
+            }
+            return $mysqli;
+        } catch (Exception $ex) {
+            return $ex->getMessage();
         }
-        return $mysqli;
     }
 
     function consulta($sql)
     {
-        $resultado = $this->conectar()->query($sql);
-        return $resultado;
+        try {
+            $conectar = $this->conectar();
+            $resultado = $conectar->query($sql);
+            return $resultado;
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+            return;
+        }
     }
 
     function siguiente($sql)
