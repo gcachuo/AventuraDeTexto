@@ -17,3 +17,6 @@ CREATE TABLE juegodetexto.habitaciones
   este VARCHAR(100),
   oeste VARCHAR(100)
 );
+
+INSERT INTO juegodetexto.habitaciones (nombre_habitacion, descripcion_habitacion, norte, sur, este, oeste) VALUES ('sala', 'Estas en la sala.', '', 'cocina', '', '');
+INSERT INTO juegodetexto.habitaciones (nombre_habitacion, descripcion_habitacion, norte, sur, este, oeste) VALUES ('cocina', 'Estas en la cocina.', 'sala', '', '', '');
