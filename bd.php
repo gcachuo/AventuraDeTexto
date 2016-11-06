@@ -8,7 +8,7 @@
  */
 class bd
 {
-    protected $host = "localhost",
+    protected $host = "127.0.0.1",
         $user = "root",
         $pass = "sqlserver",
         $bd = "juegodetexto";
