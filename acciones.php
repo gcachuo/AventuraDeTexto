@@ -9,7 +9,6 @@
 include "habitaciones.php";
 
 if (isset($_POST["accion"])) {
-    if (strpos($_POST["accion"], ' ') !== false or $_POST["accion"]=="ayuda") {
         $postAccion = explode(' ', $_POST["accion"]);
         $accion1 = $postAccion[0];
         $accion2 = $postAccion[1];
@@ -19,11 +18,13 @@ if (isset($_POST["accion"])) {
                 $habitacion = siguienteHabitacion($_POST["jugador"], $accion2);
                 echo $habitacion["descripcion"];
                 break;
+            case "ver":
+                $habitacion_actual=habitacionActual($_POST["jugador"]);
+                echo $habitacion_actual["descripcion"];
+                break;
             case "ayuda":
                 echo "Lista de comandos disponibles: <br>ir";
                 break;
         }
-    } else
-        echo "Sintaxis Incorrecta";
 }
 

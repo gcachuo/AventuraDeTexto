@@ -32,7 +32,7 @@ function ejecutarAccion() {
                 jugador: jugador
             },
             function (out) {
-                historia.prepend(out+"<br>");
+                historia.prepend("<br>"+out);
             });
 
         $("#accion").val("");

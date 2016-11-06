@@ -37,13 +37,23 @@ function resetHabitacion()
     return $lista_habitaciones[$habitacion_actual]["descripcion"];
 }
 
+function habitacionActual($jugador){
+    global $lista_habitaciones;
+    global $bd;
+
+    $sql = "select habitacion_jugador habitacion from jugador where nombre_jugador = '$jugador'";
+    $habitacion_actual= $bd->siguiente($sql)["habitacion"];
+
+    return $lista_habitaciones[$habitacion_actual];
+}
+
 function siguienteHabitacion($jugador, $direccion)
 {
     global $lista_habitaciones;
     global $bd;
 
     $sql = "select habitacion_jugador habitacion from jugador where nombre_jugador = '$jugador'";
-    $habitacion_actual = $bd->siguiente($sql)["habitacion"];
+    $habitacion_actual= $bd->siguiente($sql)["habitacion"];
 
     $siguiente_habitacion = $lista_habitaciones[$habitacion_actual][$direccion];
     if ($siguiente_habitacion == null) {
